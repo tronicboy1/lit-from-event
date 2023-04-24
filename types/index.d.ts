@@ -1,6 +1,13 @@
-import { LitElement } from "lit";
-import { Observable } from "rxjs";
 /**
  * Use to generate event observables in a LitElement
+ *
+ * @example
+ * @queryFromEvent("audio#river", "play") play$!: Observable<Event>;
  */
-export declare function fromEventQuery<T = Event>(this: LitElement, selector: string, eventName: string): Observable<T>;
+export declare function queryFromEvent<T extends HTMLElement = HTMLElement>(selector: string, event: string, options: {
+    returnElementRef: true;
+}): any;
+export declare function queryFromEvent<T extends Event = Event>(selector: string, event: string, options: {
+    returnElementRef: false;
+}): any;
+export declare function queryFromEvent<T extends Event = Event>(selector: string, event: string): any;

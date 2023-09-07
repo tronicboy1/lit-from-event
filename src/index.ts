@@ -29,7 +29,7 @@ export function queryFromEvent<T extends Event | HTMLElement = Event>(
         return from(this.updateComplete).pipe(
           map(() => this.renderRoot.querySelector(selector)),
           switchMap((element) => {
-            if (!element) throw ReferenceError("NoElementFound");
+            if (!element) throw ReferenceError("NoElementFound: " + selector);
             const operations: OperatorFunction<any, any>[] = [];
             if (options?.returnElementRef) {
               operations.push(map(() => element));
